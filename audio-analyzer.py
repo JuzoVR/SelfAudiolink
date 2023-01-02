@@ -16,13 +16,7 @@ for i in range(0, numdevices):
         if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
             print ("Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'))
 
-# Input Device id  0  -  Microsoft Sound Mapper - Input
-# Input Device id  1  -  Digital Audio Interface (Valve 
-# Input Device id  2  -  Microphone (2- USB Audio CODEC
-# Input Device id  3  -  VoiceMeeter Output (VB-Audio Vo
-# Input Device id  4  -  CABLE-B Output (VB-Audio Cable
-# Input Device id  5  -  CABLE-A Output (VB-Audio Cable
-# Input Device id  6  -  VoiceMeeter Aux Output (VB-Audi
+# Get audio devices and choose one from this list
 
 
 min_frequency = 20
@@ -149,13 +143,6 @@ def main():
         input_device_index=1,
         frames_per_buffer=CHUNK
     )
-    # fig, ax = plt.subplots()
-
-    # x = np.arange(0, 32)
-    # line, = ax.semilogx(x, np.random.rand(32), 'r')
-    # ax.set_ylim(0,400)
-    # ax.set_xlim(0,10000)
-    # fig.show()
 
     while True:
         data = stream.read(CHUNK)
@@ -177,10 +164,6 @@ def main():
         osc_client.send_message(parameter1,grouped_data[1])
         osc_client.send_message(parameter2,grouped_data[2])
         osc_client.send_message(parameter3,grouped_data[3])
-        # line.set_ydata(grouped_data)
-        # fig.canvas.draw()
-        # fig.canvas.fl
-        # ush_events()
         time.sleep(.25)
 
 main()
